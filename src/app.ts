@@ -10,7 +10,7 @@ import ajuan from './routes/ajuan';
 import pencairan from './routes/pencairan';
 import system from './routes/system';
 
-const app = new Hono<{ Bindings: { DATABASE_URL: string; JWT_SECRET: string } }>().basePath('/api');
+const app = new Hono<{ Bindings: { DATABASE_URL: string; JWT_SECRET: string; DEBUG?: string } }>().basePath('/api');
 
 // Middleware
 app.use('*', logger());

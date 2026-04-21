@@ -5,6 +5,7 @@ export const authMiddleware = createMiddleware(async (c, next) => {
   const secret = c.env.JWT_SECRET || 'secret';
   const handler = jwt({
     secret,
+    alg: 'HS256'
   });
   return handler(c, next);
 });
