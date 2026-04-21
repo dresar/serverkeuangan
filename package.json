@@ -7,10 +7,8 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "dev:worker": "wrangler dev",
-    "build": "esbuild src/index.ts --bundle --outfile=dist/_worker.js --format=esm --target=es2024 --platform=browser --minify",
-    "start": "node dist/server.js",
-    "deploy": "wrangler deploy"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@hono/node-server": "^2.0.0",
@@ -21,9 +19,7 @@
     "hono": "^4.12.14",
     "jose": "^6.2.2",
     "postgres": "^3.4.9",
-    "zod": "^4.3.6",
-    "esbuild": "^0.25.1",
-    "wrangler": "^4.84.1"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^22.16.5",
