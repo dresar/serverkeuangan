@@ -7,7 +7,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "echo 'Vercel will handle the build'",
     "start": "node dist/server.js"
   },
   "dependencies": {

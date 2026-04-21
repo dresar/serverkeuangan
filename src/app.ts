@@ -36,7 +36,8 @@ app.get('/health', async (c) => {
   let dbStatus = 'down';
   
   try {
-    const sql = getSQL(c.env.DATABASE_URL);
+    const dbUrl = c.env?.DATABASE_URL || (typeof process !== 'undefined' ? process.env.DATABASE_URL : '');
+    const sql = getSQL(dbUrl as string);
     await sql`SELECT 1`;
     dbStatus = 'up';
   } catch (err) {
@@ -58,7 +59,7 @@ app.onError((err, c) => {
   return c.json({
     status: 'error',
     message: err.message,
-    stack: c.env.DEBUG === 'true' ? err.stack : undefined
+    stack: (c.env?.DEBUG === 'true' || (typeof process !== 'undefined' && process.env.DEBUG === 'true')) ? err.stack : undefined
   }, 500);
 });
 
