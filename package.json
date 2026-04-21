@@ -1,0 +1,33 @@
+{
+  "name": "santri-dana-ku-server",
+  "version": "1.0.0",
+  "description": "Lightweight Hono backend for cPanel",
+  "private": true,
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "dev:worker": "wrangler dev",
+    "build": "esbuild src/index.ts --bundle --outfile=dist/server.js --platform=node --target=node16",
+    "start": "node dist/server.js",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.0",
+    "@hono/zod-validator": "^0.7.6",
+    "@neondatabase/serverless": "^1.1.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "hono": "^4.12.14",
+    "jose": "^6.2.2",
+    "postgres": "^3.4.9",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.5",
+    "esbuild": "^0.25.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.84.1"
+  }
+}
